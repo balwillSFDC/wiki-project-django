@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    {% if edit %}
+        {% include 'encyclopedia/page_form.html' %}
+    {% else %}
+        {{ content|safe }}
+        <a class="btn btn-primary" href="{% url 'edit_page' title edit %}" role="button">Edit Page</a>
+
+    {% endif %}
+{% endblock %}

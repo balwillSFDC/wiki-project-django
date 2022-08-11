@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layout.html" %}
+{% include "encyclopedia/entries.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    {% include 'encyclopedia/entries.html' %}
+
+{% endblock %}

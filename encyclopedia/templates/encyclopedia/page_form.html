@@ -1,0 +1,31 @@
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% elif message.tags == 'success' %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if edit %}
+    <div class="alert alert-info" role="alert">
+        You are editing the {{title}} page
+    </div>
+    <form action="{% url 'edit_page' title edit %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="btn btn-primary mb-3">
+    </form>
+{% else %}
+    <form action="{% url 'new_page' %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="btn btn-primary mb-3">
+    </form>
+{% endif %}
+
